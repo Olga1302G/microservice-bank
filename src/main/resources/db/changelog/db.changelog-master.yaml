@@ -1,0 +1,118 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-master.yaml
+  - changeSet:
+      id: 1
+      author: banks
+      changes:
+        - createTable:
+            tableName: payments
+            columns:
+              - column:
+                  name: clientid
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: paymentid
+                  type: BIGINT
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: city
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: olga
+      comment: "Create new user"
+      changes:
+        - insert:
+            tableName: payments
+            columns:
+              - column:
+                  name: clientid
+                  value: 1
+              - column:
+                  name: paymentid
+                  value: 1
+              - column:
+                  name: name
+                  value: "Lex"
+              - column:
+                  name: city
+                  value: "Moscow"
+              - column:
+                  name: created
+                  value: "12.01.1987"
+        - insert:
+            tableName: payments
+            columns:
+              - column:
+                  name: clientid
+                  value: 2
+              - column:
+                  name: paymentid
+                  value: 2
+              - column:
+                  name: name
+                  value: "Serge"
+              - column:
+                  name: city
+                  value: "St. Petersburg"
+              - column:
+                  name: created
+                  value: "14.10.1987"
+        - insert:
+            tableName: payments
+            columns:
+              - column:
+                  name: clientid
+                  value: 3
+              - column:
+                  name: paymentid
+                  value: 3
+              - column:
+                  name: name
+                  value: "Alina"
+              - column:
+                  name: city
+                  value: "St. Petersburg"
+              - column:
+                  name: created
+                  value: "21.10.1995"
+        - insert:
+            tableName: payments
+            columns:
+              - column:
+                  name: clientid
+                  value: 4
+              - column:
+                  name: paymentid
+                  value: 4
+              - column:
+                  name: name
+                  value: "Anna"
+              - column:
+                  name: city
+                  value: "Novosibirsk"
+              - column:
+                  name: created
+                  value: "08.09.1942"
+
+      rollback:
+        - delete:
+            tableName: payments
